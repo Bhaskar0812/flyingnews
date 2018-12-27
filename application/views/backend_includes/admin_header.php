@@ -2,7 +2,7 @@
  <!DOCTYPE html>
 <html lan="En">
 <head>
- <!-- <link rel="shortcut icon" href="<?php echo base_url();?>backend_assets/logo/20.png"> -->
+<link rel="shortcut icon" href="<?php echo base_url().FN_ADMIN_IMAGES.'logo4.png'?>">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title style="color:black;">

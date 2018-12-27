@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <link rel="shortcut icon" href="<?php echo base_url();?>backend_assets/logo/20.png">
+ <link rel="shortcut icon" href="<?php echo base_url().FN_ADMIN_IMAGES.'logo4.png'?>">
   <title>Mabwe | Log in</title>
   <?php $backend = base_url()."backend_assets/";?>
   <!-- Tell the browser to be responsive to screen width -->
@@ -27,7 +27,7 @@
 <div class="login-box">
   
   <div class="login-logo">
-     <a href="<?php echo base_url();?>admin"><img src="<?php echo base_url();?>backend_assets/logo/logo_200.png"></a>
+     <a href="<?php echo base_url();?>admin"><img src="<?php echo base_url().FN_ADMIN_IMAGES.'logo1.png'?>"></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
