@@ -101,50 +101,16 @@ define('MAP_USER','backend_asset/custom/images/new_map_icon.png');
 
 /*Database table's constants*/
 define('ADMIN', 'admin');
-define('EDUCATION', 'educations');
 define('USERS', 'users');
-define('WORKS', 'works');
-define('INTERESTS', 'interests');
-define('USERS_EDUCATION', 'users_education_mapping');
 define('USERS_IMAGE', 'users_image');
-define('SITE_TITLE','Mabwe');
+define('SITE_TITLE','Flying News');
 define('COPYRIGHT','© '.date("Y",strtotime("-1 year")).'-'.date("Y").' All Rights Reserved By');
 define('ADMIN_PROFILE_THUMB','uploads/profile/thumb/');
 define('ADMIN_PROFILE','uploads/profile');
-define('GROUP_IMAGE','uploads/group/');
-define('CATEGORY_IMAGE','uploads/categories');
 define('USER_PROFILE_THUMB','uploads/users/thumb/');
 define('USER_PROFILE','uploads/users/');
 define('ASSETS','backend_assets');
 define('DEFAULT_IMAGE','extra/placeholder.png');
-define('PROFILE_DETAIL_DEFAULT','extra/company.png');
-define('BUSINESS_LOGO','uploads/logo/thumb/');
-define('BUSINESS','business');
-define('CLIENTS','clients');
-define('SUPPLIERS','suppliers');
-define('SALESMAN','salesmans');
-define('LOCATIONS','locations');
-define('INVENTORIES','inventories');
-define('TRANSFER_INVENTORY','transferInventory');
-define('INVOICE','invoices');
-define('COSTS','costs');
-define('EXPENSES','expenses');
-define('UNSUCCESS','unsuccess');
-define('INCOME_EXPENSES','incomeExpenses');
-define('TAX','taxes');
-define('PAYMENT','payments');
-define('TRANSFER','transfer_inventoryies_data');
-define('CATEGORIES','categories');
-define('POSTS_IMAGES','post_images');
-define('POST_ATTACHMENTS','post_attachments');
-define('POSTS','posts');
-define('POST_PERMISSION','post_permissions');
-define('STARTUPS','startups');
-define('TAGS','tags');
-define('TAGS_MAPPING','tags_mapping');
-define('LIKES','likes');
-define('OPTIONS','options');
-define('COMMENTS','comments');
 define('GROUPS','groups');
 define('GROUP_MEMBERS','group_members');
 define('GROUP_LIKES','group_likes');
@@ -153,7 +119,8 @@ define('NOTIFICATIONS','notifications');
 define('GROUP_TAGS_MAPPING','group_tag_mapping');
 define('NOTIFICATION_KEY','AAAAgCVau_0:APA91bHkbHPlqUKV1EQjJtXwSoOB8fWabr6NG7GeUPt9vuKrc4lel-4GWU7DFqanVSznLkYwhWx3bs_wMgsbgiIzEc_-6E40YoRY18GDjVH8oR8G_ETDu1qjzzxfpTAZf0qpPbHVhmPrnaiwoIlw6bhHPj5VDHdlDw');
 define('TERM_CONDITION','uploads/content/term_condition/');
-define('PLACEHOLDER', 'front_assets/img/default1.jpg');
+define('PLACEHOLDER', 'backend_assets/img/default1.jpg');
+
 
 
 /* Image Folder Path*/
@@ -162,26 +129,16 @@ define('USER_IMG_PATH','uploads/profile/');
 define('USER_IMG_PATH_THUB','uploads/profile/thumb/');
 define('COMPANY_LOGO','uploads/logo/');
 define('LOGO','logo/');
-define('PRODUCT_IMAGE','uploads/product/');
-define('POST_IMAGE_PATH_THUMB','uploads/postImages/thumb/');
-define('POST_IMAGE_PATH','uploads/postImages/');
-define('POST_IMAGE_UPLOAD','postImages/');
-define('PRODUCT_IMAGE_UPLOAD','product/');
-define('CATEGORIES_UPLOAD_FOLDER','uploads/categories/');
-define('GROUP_IMAGE_THUMB','uploads/group/thumb/');
+define('ADMIN_IMAGE_PATH','uploads/profile/');
 
 
 
 
 //added a constat for fron assets//
-define('MWCSS', 'front_assets/css/');
-define('MWJS', 'front_assets/js/');
-define('MWCJS', 'front_assets/custom_js/');
-define('MWFONTS', 'front_assets/fonts/');
-define('MWIMAGES', 'front_assets/img/');
-define('MWTJS', 'front_assets/toastr/');
-define('MWTCSS', 'front_assets/toastr/');
-define('MWCCSS', 'front_assets/custom_css/');
+define('FN_ADMIN', 'backend_assets/');
+define('FN_ADMIN_IMAGES', 'backend_assets/images/');
+define('FNJS', 'backend_assets/js/');
+
 
 
 
