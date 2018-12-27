@@ -87,9 +87,9 @@ class Service extends CommonService_controller {
       }
       $this->response($response);
     }
-    } //end function
+  } //end function
 
-  function userLogin_post(){  
+  function userLogin_post(){//User Login function   
     $this->load->library('form_validation');
     $this->form_validation->set_rules('email','Email','required');
     $this->form_validation->set_rules('password','Password','required');
@@ -107,7 +107,7 @@ class Service extends CommonService_controller {
         $userData['authToken']  = $authToken;
         $where = array('email'=>$email);
         $table = USERS;
-        $isLoggedIn = $this->user_model->isLogin($userData,$authToken,$where,$table);
+        $isLoggedIn = $this->service_model->isLogin($userData,$authToken,$where,$table);
         if(is_string($isLoggedIn['type']) && $isLoggedIn['type'] == 'NA'){
           $responseArray = array('status'=>FAIL,'message'=>ResponseMessages::getStatusCodeMessage(121), 'userDetail'=>$isLoggedIn['userDetail']);
         } elseif(is_string($isLoggedIn['type']) && $isLoggedIn['type'] == 'WP'){

@@ -18,9 +18,11 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 ##Ignore htaccess as we will have different environment for local, dev and prod(Add this file manually in your project)
 .htaccess
-                
-application/vendor/*        ##Ignore everything in composer vendor directory
-uploads/*                   ##Ignore everything in uploads directory
+
+##Ignore everything in composer vendor directory
+application/vendor/*
+##Ignore everything in uploads directory         
+uploads/*                   
 
 # IDE Files
 #-------------------------

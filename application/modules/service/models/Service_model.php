@@ -178,6 +178,38 @@ class Service_model extends CI_Model {
 		}
 		return false;
 	}
+
+	function isLogin($data,$authToken,$where,$table){// function for login
+	  $res = $this->db->select('*')->where($where)->get($table);
+	  if($res->num_rows() > 0){
+	  	$result = $res->row();
+	  	$password = $data['password'];	
+	  	if(password_verify($password,$result->password)){
+	  		if($result->status == 1){//if user is active
+	  				$update_data = array();
+	  				$update_data['deviceToken'] = $data['deviceToken'];
+	  				$update_data['deviceType'] = $data['deviceType'];
+	          $update_data['authToken'] = $authToken;
+	  				$update_data['forgetPass'] = '';
+	  			if(!empty($update_data['deviceToken'])){
+	  				$this->db->update($table,array('deviceToken' => '','forgetPass'   =>''),array('deviceToken'=>$update_data['deviceToken']));
+	  				$this->db->update($table,$update_data,array('userId'=>$result->userId));
+	  				$userDetail = $this->userInfo(array('userId'=>$result->userId));
+	  				return array('type'=>'LS','userDetail'=>$userDetail); //login successfull
+	  			} else{
+	  				$this->db->update($table,array('authToken'=>$data['authToken'],'forgetPass'=>''),array('userId'=>$result->userId));
+	  				$userDetail = $this->userInfo(array('userId'=>$result->userId));
+	  				return array('type'=>'LS','userDetail'=>$userDetail); //login successfull
+	  			}
+	  		} else {
+	  			return array('type'=>'NA','userDetail'=>array()); // not active
+	  		}
+	  	} else {
+	  		return array('type'=>'WP','userDetail'=>array()); //wrong password
+	  	}
+	  } 
+	  return FALSE;
+  }//end of function.
 	
 }//END OF CLASS.
 
