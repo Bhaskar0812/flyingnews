@@ -9,10 +9,10 @@ class Service_model extends CI_Model {
 	}
 	
 	//Function for check provided token is valid or not
-	function isValidToken($authToken,$table){
+	function isValidToken($authToken){
 		$this->db->select('*');
 		$this->db->where('authToken',$authToken);
-		if($query = $this->db->get($table)){
+		if($query = $this->db->get(USERS)){
 			if($query->num_rows() > 0){
 				return $query->row();
 			}
@@ -31,7 +31,6 @@ class Service_model extends CI_Model {
     //function for forget password 
         $get = array();
         $this->load->library('Smtp_email');
-        //smtp email send library..
         $email = $data['email'];
         $query = $this->db->select('*')->where('email',$email)->get($table);
         if($query->num_rows()==1){
@@ -43,10 +42,10 @@ class Service_model extends CI_Model {
                 $query = $this->db->select('*')->where('userId',$get['userId'])->get($table);
                 if($query->num_rows()==1){
 	                $dataUser = $query->row();
-	                $dataSend['name']       = $dataUser->fullname;
+	                $dataSend['name']       = $dataUser->fullName;
 	                $dataSend['message']    = 'Reset Link for You Email:'.''.$data['email'].' '.'is'.'';
 	                $dataSend['email']      = $data['email'];
-	                $dataSend['link']       = base_url()."user/setPasswordUser/?token=".$dataUser->forgetPass."&userid=".encoding($get['userId']);//used encoding for encrypt user id becase it will give always same encode for same digit.
+	                $dataSend['link']       = base_url()."user_authentication/setPasswordUser/?token=".$dataUser->forgetPass."&userid=".encoding($get['userId']);//used encoding for encrypt user id becase it will give always same encode for same digit.
 	                 $dataSend['browser']   = $_SERVER['HTTP_USER_AGENT'];
 	                 // this will give browser name and os detail.
 	                $message = $this->load->view('email/reset_password',$dataSend,TRUE);
@@ -210,6 +209,20 @@ class Service_model extends CI_Model {
 	  } 
 	  return FALSE;
   }//end of function.
+
+  function updateProfile($table,$where,$updateData){//function for update profile.
+      if(isset($where)){  
+          $query = $this->db->update($table, $updateData, array('userId'=>$where));
+          if($query){
+            $userDetail   =   $this->userInfo(array('userId'=>$where),$table);//fetch user data from userInfo function.
+        return array('type'=>'US','userDetail'=>$userDetail);//update successfully.
+          } else{
+            return array('type'=>'NU','userDetail'=>array()); //not update.
+          }
+        } else{
+          return FALSE; //we cannt process your request.
+        }
+    }//End Of FUNCTION
 	
 }//END OF CLASS.
 

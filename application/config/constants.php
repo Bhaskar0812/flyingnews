@@ -104,7 +104,7 @@ define('ADMIN', 'admin');
 define('USERS', 'users');
 define('USERS_IMAGE', 'users_image');
 define('SITE_TITLE','Flying News');
-define('COPYRIGHT','© '.date("Y",strtotime("-1 year")).'-'.date("Y").' All Rights Reserved By');
+define('COPYRIGHT','© '.date("Y",strtotime("-1 year")).'-'.date("Y").' All Rights Reserved By Flying News');
 define('ADMIN_PROFILE_THUMB','uploads/profile/thumb/');
 define('ADMIN_PROFILE','uploads/profile');
 define('USER_PROFILE_THUMB','uploads/users/thumb/');

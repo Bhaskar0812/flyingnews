@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <link rel="shortcut icon" href="<?php echo base_url().FN_ADMIN_IMAGES.'logo4.png'?>">
-  <title>Flying News | Log in</title>
+  <title>Flying News | Set Password</title>
   <?php $backend = base_url()."backend_assets/";?>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -31,17 +31,17 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Set New Password</p>
 
     <form id="login">
       <div class="text-danger error font_12" id="unsuccess" ></div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Email/Username" name="userName">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="password" class="form-control" placeholder="New Password" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         <div class="text-danger error font_12" id="userName_error" ></div>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         <div class="text-danger error font_12" id="password_error" ></div>
       </div>
@@ -56,7 +56,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-5">
-          <button type="submit" class="btn btn-primary btn-raised btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-raised btn-block btn-flat">Set password</button>
         </div>
         
         <!-- /.col -->

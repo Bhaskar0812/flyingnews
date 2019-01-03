@@ -33,11 +33,11 @@
 <body style="font-family: 'Source Sans Pro', sans-serif; padding:0; margin:0;">
     <table style="max-width: 750px; margin: 0px auto; width: 100% ! important; background: #F3F3F3; padding:30px 30px 30px 30px;" width="100% !important" border="0" cellpadding="0" cellspacing="0">
         <tr>
-            <td style="text-align: center; background: #ff7701;">
+            <td style="text-align: center; background: white;">
                 <table width="100%" border="0" cellpadding="30" cellspacing="0">    
                     <tr>
                         <td>
-                            <img style="max-width: 125px; width: 100%;padding: 10px;" src="<?php echo base_url();?>backend_assets/logo/200.png">
+                            <img style="max-width: 125px; width: 100%;padding: 10px;" src="<?php echo base_url();?>backend_assets/images/logo2.png">
                         </td>
                     </tr>
                 </table>
@@ -52,7 +52,7 @@
 
                             <h3 style="color: #333; font-size: 28px; font-weight: normal; margin: 0; text-transform: capitalize;">Reset Password</h3>
                             <p style="text-align: left; color: #333; font-size: 16px; line-height: 28px;">Hello <?php echo $name ?>,</p>
-                            <p style="text-align: left;color: #333; font-size: 16px; line-height: 28px;">You recently requested to reset your password for your Mabwe account. Please click on button To reset your password: </p>
+                            <p style="text-align: left;color: #333; font-size: 16px; line-height: 28px;">You recently requested to reset your password for your Flying News account. Please click on button to reset your password: </p>
                             <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                           <td align="center">
@@ -64,7 +64,7 @@
                                   <table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
-                                        <a style="border: 10px #ff7701 solid;background:#ff7701;color: white;text-decoration: none;" class="button button--green" href="<?php echo $link ?>">Reset Password</a>
+                                        <a style="border: 10px #26abff solid;background:#26abff;color: white;text-decoration: none;" class="button button--green" href="<?php echo $link ?>">Reset Password</a>
                                       </td>
                                     </tr>
                                   </table>
@@ -87,7 +87,7 @@
             <td style="text-align: center;">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fff">
                     <tr>
-                        <td style="padding: 10px;background: #ff7701;color: #fff;"><?php echo COPYRIGHT; ?></td>
+                        <td style="padding: 10px;background: #26abff;color: #fff;"><?php echo COPYRIGHT; ?></td>
                     </tr>
                 </table>
             </td>

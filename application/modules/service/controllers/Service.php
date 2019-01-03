@@ -185,10 +185,9 @@ class Service extends CommonService_controller {
         $password =$this->input->post('password');
         $npassword =$this->input->post('npassword');
         $table  = USERS;
-        $select = "password";
         $wheres = array('userId'=>$this->authData->userId);  
         $where = $this->authData->userId; 
-        $user = $this->user_model->customGet($select,$wheres,$table); // password with select from here to check old passwod
+        $user = $this->common_model->getsingle($table,$wheres,'password'); // password with select from here to check old passwod
         //print_r($user);
         $passwordc = $user->password;
         $passwordVerfied = password_verify($password, $passwordc); //verified password here. 
@@ -196,7 +195,7 @@ class Service extends CommonService_controller {
             $newPassword = password_hash($this->input->post('npassword') , PASSWORD_DEFAULT);//password hash encrypt.
             $data =array('password'=> $newPassword); 
             $table = USERS;
-            $res = $this->user_model->updateProfile($table,$where, $data);
+            $res = $this->service_model->updateProfile($table,$where, $data);
             if(is_string($res['type']) && $res['type'] == 'US'){
               $response = array('status'=>SUCCESS,'message'=>ResponseMessages::getStatusCodeMessage(148),'updatedData'=>$res);
             } elseif(is_string($res) && $res == 'NU'){
