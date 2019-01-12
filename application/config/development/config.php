@@ -459,22 +459,11 @@ $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array(
-        'service/[a-z 0-9]+',
- 	'service/user/[a-z 0-9_]+',
-        'service/connections/[a-z 0-9]+',
+        'api_v1/[a-z 0-9]+',
+        'api_v1/user/[a-z 0-9_]+',
+ 	'api_v1/news/[a-z 0-9_]+',
         'admin/[a-z 0-9]+',
         'admin/users/[a-z 0-9]+',
-        'admin/categories/[a-z 0-9]+',
-        'admin/groups/[a-z 0-9]+',
-        'newsfeed/getPostData',
-        'newsfeed/searchResult',
-        'groups/searchResultGroup',
-        'groups/getCommentsFromGroup',
-        'notification/getNotification',
-        'notification/getNotificationView',
-        'connections/manageConnection',
-        'connections/getListofConnections',
-        'connections/getListofPendingConnections'
 
     );
 

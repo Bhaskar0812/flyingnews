@@ -117,11 +117,17 @@ define('GROUP_LIKES','group_likes');
 define('GROUP_COMMENTS','group_comments');
 define('NOTIFICATIONS','notifications');
 define('GROUP_TAGS_MAPPING','group_tag_mapping');
-define('NOTIFICATION_KEY','AAAAgCVau_0:APA91bHkbHPlqUKV1EQjJtXwSoOB8fWabr6NG7GeUPt9vuKrc4lel-4GWU7DFqanVSznLkYwhWx3bs_wMgsbgiIzEc_-6E40YoRY18GDjVH8oR8G_ETDu1qjzzxfpTAZf0qpPbHVhmPrnaiwoIlw6bhHPj5VDHdlDw');
+define('NOTIFICATION_KEY','2846ee24d67b48e6bd8248dddb2331f7');
+define('NEWS_KEY','2846ee24d67b48e6bd8248dddb2331f7');
 define('TERM_CONDITION','uploads/content/term_condition/');
 define('PLACEHOLDER', 'backend_assets/img/default1.jpg');
 
+/*
+database related constact..*/
 
+define('NEWS_SOURCES', 'news_sources');
+define('CATEGORIES', 'categories');
+define('USER_NEWS_SOURCES', 'user_news_sources');
 
 /* Image Folder Path*/
 define('UPLOAD_FOLDER', 'uploads');

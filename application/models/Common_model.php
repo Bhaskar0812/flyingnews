@@ -172,7 +172,7 @@ class Common_model extends CI_Model {
         }
     }
      function insertData($table,$data){
-     $this->db->insert($table,$data);
+     $this->db->insert($data,$table);
      return $this->db->insert_id();
      }//E
 
@@ -274,10 +274,12 @@ class Common_model extends CI_Model {
         }
     }//END OF FUNCTION..
 
-    function select_result($where,$table){  
+    function select_result($where='',$table){  
     //function for select row from database..
         $this->db->select("*");
-        $this->db->where($where);
+        if(!empty($where)){
+            $this->db->where($where);
+        }
         $query = $this->db->get($table);
         //echo $str = $this->db->last_query(); die;
         if($query->num_rows()>0){
@@ -389,118 +391,6 @@ class Common_model extends CI_Model {
         return FALSE;
     }//END OF FUNCTION..
 
-    function select_post_detail($where, $limit, $offset){
-       // pr($where);
-        //select jobs data..with multiple images..
-       $existThumb= base_url().UPLOAD_FOLDER.'/profile/';
-        $default   = base_url().DEFAULT_USER;
-        $this->db->select('post.postId,post.title,post.description,post.latitude,post.longitude,post.country,post.state,post.address,DATE_FORMAT(`post`.crd, "%d/%m/%Y %H:%m:%s") as crd,comment.commentId,comment.comment,COUNT(DISTINCT `comment`.`commentId`) as comment_count,comment.user_id,category.categoryName,user.fullname,user.userId as user_id,(case 
-            when( user.profileImage = "" OR user.profileImage IS NULL) 
-            THEN "'.$default.'"
-            ELSE
-            concat("'.$existThumb.'",user.profileImage) 
-            END ) as profile_image,usr.fullname as user_name,like.likeId,COUNT(DISTINCT `like`.`likeId`) as like_count, COALESCE((SELECT likes.status FROM `likes` WHERE `post_id` = `post`.`postId` AND `user_id` = '.$where.'
-        ),0) as user_like_status,pm.authorisedToWork,pm.willingToRelocate,pm.whilingToship,pm.email,pm.contact
-       ');
-        //$this->db->select('CONCAT("'.$existThumb.'",postImage) as post_image');
-        $this->db->join('`categories` `category`','category.categoryId = post.category_id','left');
-        $this->db->join('`post_permissions` `pm`','pm.post_id = post.postId','left');
-        $this->db->join('`users` `user`','user.userId = post.user_id','left');
-        
-        //$this->db->join('`comments` `commnt`','`commnt`.`user_id`= `user`.`userId`','left');
-        $this->db->join('`comments` `comment`','`comment`.`post_id`= `post`.`postId`','left');
-        $this->db->join('`users` `usr`','usr.userId  =  comment.user_id' ,'left');
-        $this->db->join('`likes` `like`','`post`.`postId` = `like`.`post_id` and like.status = 1','left');
-        //$this->db->join('`posts`.`postId` = `comm`.`post_id`','left');
-        $this->db->where('post.postId',$where);
-        $this->db->group_by('post.postId');
-        $this->db->limit($limit, $offset);
-        //$this->db->group_by('`comments`.`user_id`');
-        $query = $this->db->get('`posts` `post`');//lq();
-        //echo $this->db->last_query();die;
-        if($query->num_rows()){
-          $query->row()->postimage = $this->getImages($where);
-            $dat= $this->getTags($where);
-            if(empty($dat)){
-               $query->row()->tags = array();
-            }else{
-              $query->row()->tags = $dat;
-            }
-
-            $comm= $this->getComments($where, $limit, $offset);
-            if(empty($comm)){
-               $query->row()->comments = array();
-            }else{
-              $query->row()->comments = $comm;
-            }
-          //$query->row()->tags =  $this->getTags($where);
-        $user = $query->result();
-        if (!empty($user->profileImage) && filter_var($user->profileImage, FILTER_VALIDATE_URL) === false) {
-        $user->profileImage = base_url().UPLOAD_FOLDER.'/profile/'.$user->profileImage;
-         }
-        //pr($user);
-         return $user;
-        }return FALSE;
-    }//END OF FUNCTION..
-
-    function getImages($where){//select multiple images..
-      $existThumb= base_url().UPLOAD_FOLDER.'/postImages/';
-      $query = $this->db->select('CONCAT("'.$existThumb.'",attachmentName) as post_image')->where('post_id',$where)->get(POST_ATTACHMENTS);
-      if($query->num_rows()){
-        $result = $query->result();
-        return $result;
-      }else{
-        return FALSE;
-      }
-    }//end of function..
-
-
-    function getTags($where){//select multiple images..
-      //$existThumb= base_url().UPLOAD_FOLDER.'/postImages/';
-      $this->db->select(TAGS_MAPPING.'.tag_id');
-      $this->db->select(TAGS.'.tagName');
-      $this->db->join(TAGS,'tags_mapping.tag_id = tags.tagId');
-       $this->db->where('post_id',$where);
-      $query =  $this->db->get(TAGS_MAPPING);
-      if($query->num_rows()){
-        $result = $query->result();
-        return $result;
-      }else{
-        return FALSE;
-      }
-    }//end of function..
-
-    function getComments($where){//select multiple images..
-        $existThumb= base_url().UPLOAD_FOLDER.'/profile/';
-        $default   = base_url().DEFAULT_USER;
-      $query = $this->db->select('comment.comment,comment.user_id,user.fullname,concat("'.$existThumb.'",user.profileImage) as profile_image')
-      ->join('`users` `user`','user.userId = comment.user_id','left')
-      ->
-      where('post_id',$where)
-      ->get('`comments` `comment`', 5);
-      if($query->num_rows()){
-        $result = $query->result();
-        return $result;
-      }else{
-        return FALSE;
-      }
-    }//end of function..
-
-    function select_comment_on_post($where){//select multiple images..
-        $existThumb= base_url().UPLOAD_FOLDER.'/profile/';
-        $default   = base_url().DEFAULT_USER;
-      $query = $this->db->select('comment.comment,comment.user_id,user.fullname,concat("'.$existThumb.'",user.profileImage) as profile_image')
-      ->join('`users` `user`','user.userId = comment.user_id','left')
-      ->
-      where('post_id',$where)
-      ->get('`comments` `comment`');
-      if($query->num_rows()){
-        $result = $query->result();
-        return $result;
-      }else{
-        return FALSE;
-      }
-    }//end of function..
 
      function getAll($table, $order_fld = '', $order_type = '', $select = 'all', $limit = '', $offset = '',$group_by='') {
         $data = array();
