@@ -4,7 +4,7 @@ class ResponseMessages{
 
     public static function getStatusCodeMessage($status)
     {
-
+        $CI =& get_instance();
         $codes = Array(
             100 => "Invalid API key",
             101 => "Invalid Auth Token",
@@ -42,12 +42,12 @@ class ResponseMessages{
             134 => "Not registered",
             135 => "User registered",
             136 => "Request cancel successfully",
-            137=>   "Logged out successfully.",
-            138=>  "Image uploaded successfully.",
-            138=>  "Profile not updated.",
-            139=>  "Registration Successfull.",
-            140=>  "Password changed successfully.",
-            141=>  "Old password do not match.",
+            137 =>   "Logged out successfully.",
+            138 =>  "Image uploaded successfully.",
+            138 =>  "Profile not updated.",
+            139 =>  "Registration Successfull.",
+            140 =>  "Password changed successfully.",
+            141 =>  "Old password do not match.",
             142 => "Please check your mail to reset your password",
             143 => "Invalid email id",
             144 => "Sorry! profile update failed.",
@@ -76,6 +76,10 @@ class ResponseMessages{
             167 => "Sources added successfully.",
             168 => "Sources updated successfully.",
             169 => "Only 20 sources allowed.",
+            170 => "Languages added.",
+            171 => $CI->lang->line("error_added_successfully_language"),
+            172 => $CI->lang->line("error_no_changes"),
+            173 => $CI->lang->line("error_fullname"),
 
            
            

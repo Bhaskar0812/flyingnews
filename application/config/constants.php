@@ -127,7 +127,8 @@ database related constact..*/
 
 define('NEWS_SOURCES', 'news_sources');
 define('CATEGORIES', 'categories');
-define('USER_NEWS_SOURCES', 'user_news_sources');
+define('USER_PREFRENCES', 'user_prefrences');
+define('USER_LANGUAGES', 'user_languages');
 
 /* Image Folder Path*/
 define('UPLOAD_FOLDER', 'uploads');

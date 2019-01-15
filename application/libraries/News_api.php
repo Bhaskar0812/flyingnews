@@ -11,29 +11,35 @@ class News_api{
         $pageSize = $data['pageSize'];
         $page = $data['page'];
         $source = $data['source'];
-         $fields = array(
+        $category = $data['category'];
+        $language = $data['language'];
+        $fields = array(
             
         );
          $date = '2019-01-11';
          $dateTo = '2019-01-12';
             $headers = array(
-           
+           'q='.$q.''
         );
-        $url = 'https://newsapi.org/v2/'.$type.'?apikey='.NEWS_KEY.'&from='.$from.'&sortBy=popularity&q='.$q.'&to='.$to.'&pageSize='.$pageSize.'&page='.$page.'&sources='.$source.'';
+
+        $data = array("q" => $q);                                                                    
+        $data_string = json_encode($data);       
+        $url = 'https://newsapi.org/v2/'.$type.'?apikey='.NEWS_KEY.'&sortBy=popularity&&pageSize='.$pageSize.'&page='.$page.'&q='.$q.'&sources='.$source.'&language='.$language.'&category='.$category.'';
         //pr($url);
         $ch = curl_init();
         curl_setopt( $ch, CURLOPT_URL, $url); 
         //curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-        curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'GET' );
+        curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt( $ch,CURLOPT_POST, true );
         curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers ); 
         curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
         curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );   
-        curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
-        $result = curl_exec($ch );
+        //curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+        $result = curl_exec($ch);
         curl_close( $ch );
-        log_event($result, $notify_log);  //create log of news Api
         return $result;
+        //log_event($result, $notify_log);  //create log of news Api
+        
     }
 
    public function get_news_sources(){

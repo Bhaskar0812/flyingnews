@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //load rest library
 require APPPATH . '/libraries/REST_Controller.php';
-class CommonService_controller extends REST_Controller{
+class Api_v1 extends REST_Controller{
     
     public function __construct(){
         parent::__construct();
@@ -9,6 +9,7 @@ class CommonService_controller extends REST_Controller{
         $this->load->helper('responseMessages');
         $this->load->model('Image_model'); //load image model
         $this->load->model('notification_model'); //load push notification model
+
     }
 
     //check auth token of request
@@ -32,6 +33,22 @@ class CommonService_controller extends REST_Controller{
         $authToken = isset($header[$key]) ? $header[$key] : '';
         $userAuthData =  !empty($authToken) ? $this->service_model->isValidToken($authToken) : '';
        // pr($userAuthData);
+
+        $language_array = array('english','spanish');//language array
+        $this->appLang = 'english'; //set default langauge
+        //$header = $this->input->request_headers();//get header values
+        if(!empty($userAuthData->language)){//if language key not empty get language from header
+
+            $lang_val = $userAuthData->language;//get header language 
+
+            if(in_array($lang_val,$language_array )){//check if header langauge in array set in varaible
+                $this->appLang = $lang_val;
+            }
+        }
+
+        //load response language files for selected language
+        $this->lang->load('response_messages_lang', $this->appLang); 
+        $this->load->helper('responseMessages');
 
         if(empty($userAuthData)){ 
             $this->response($this->token_error_msg(2), SERVER_ERROR); //authetication failed 
