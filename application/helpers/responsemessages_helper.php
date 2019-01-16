@@ -80,6 +80,8 @@ class ResponseMessages{
             171 => $CI->lang->line("error_added_successfully_language"),
             172 => $CI->lang->line("error_no_changes"),
             173 => $CI->lang->line("error_fullname"),
+            174 => $CI->lang->line("success_favorite"),
+            175 => $CI->lang->line("error_favorite"),
 
            
            

@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //load rest library
 require APPPATH . '/libraries/REST_Controller.php';
-class Api_v1 extends REST_Controller{
+class Common_api_v1 extends REST_Controller{
     
     public function __construct(){
         parent::__construct();

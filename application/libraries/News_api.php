@@ -1,8 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+
 class News_api{
 
-    public function get_news($data){
+    public function get_news($url){
+        //use phpfastcache\lib\Phpfastcache\CacheManager;
+        //use flyingnews\application\vendor\phpfastcache\phpfastcache\lib\Phpfastcache\Config\ConfigurationOption;
+    
+        $headers = array(
+        );
+// In your class, function, you can call the Cache
+        /*$InstanceCache = CacheManager::getInstance('files');
+
         $notify_log = FCPATH.'newslog_log.txt';
         $type = $data['type'];
         $from = $data['from'];
@@ -18,14 +29,17 @@ class News_api{
         );
          $date = '2019-01-11';
          $dateTo = '2019-01-12';
-            $headers = array(
-           'q='.$q.''
-        );
+           
 
-        $data = array("q" => $q);                                                                    
+        $data = array("q" => $q);
+
+
         $data_string = json_encode($data);       
         $url = 'https://newsapi.org/v2/'.$type.'?apikey='.NEWS_KEY.'&sortBy=popularity&&pageSize='.$pageSize.'&page='.$page.'&q='.$q.'&sources='.$source.'&language='.$language.'&category='.$category.'';
         //pr($url);
+        $CachedString = $InstanceCache->getItem($url);*/
+
+
         $ch = curl_init();
         curl_setopt( $ch, CURLOPT_URL, $url); 
         //curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
@@ -35,6 +49,9 @@ class News_api{
         curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
         curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );   
         //curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+        
+
+
         $result = curl_exec($ch);
         curl_close( $ch );
         return $result;

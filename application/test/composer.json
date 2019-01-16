@@ -1,0 +1,12 @@
+{
+    "name": "root/application",
+    "authors": [
+        {
+            "name": "Bhaskar",
+            "email": "mindiii.projects@gmail.com"
+        }
+    ],
+    "require": {
+    	 "rackspace/php-opencloud": "dev-master"
+    }
+}

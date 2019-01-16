@@ -129,6 +129,7 @@ define('NEWS_SOURCES', 'news_sources');
 define('CATEGORIES', 'categories');
 define('USER_PREFRENCES', 'user_prefrences');
 define('USER_LANGUAGES', 'user_languages');
+define('USER_FAVOURITE_NEWS', 'user_favourite_news');
 
 /* Image Folder Path*/
 define('UPLOAD_FOLDER', 'uploads');

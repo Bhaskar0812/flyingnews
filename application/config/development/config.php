@@ -134,14 +134,14 @@ $config['subclass_prefix'] = 'MY_';
 | Or if you have your vendor/ directory located somewhere else, you
 | can opt to set a specific path as well:
 |
-|	$config['composer_autoload'] = '/path/to/vendor/autoload.php';
+|	$config['composer_autoload'] = '/path/to/vendor/autoload.php';Composer
 |
 | For more information about Composer, please visit http://getcomposer.org/
 |
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

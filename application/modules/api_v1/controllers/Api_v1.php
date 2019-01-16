@@ -1,6 +1,6 @@
 <?php if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Api_v1 extends Api_v1 {
+class Api_v1 extends Common_api_v1 {
 
 	function __construct(){
 		parent::__construct();
